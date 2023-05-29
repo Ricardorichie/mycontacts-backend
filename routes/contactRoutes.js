@@ -9,15 +9,22 @@ const {
   updateContact,
   deleteContact,
 } = require("../controllers/contactController");
+const validateToken = require("../middleware/validateHandler");
 
-router.route("/").get(getContacts);
+router.use(validateToken); //implementing protected routes
 
-router.route("/").post(createContact);
+//combined the routes because they are common
+router.route("/").get(getContacts).post(createContact);
+//Same as ;
+// router.route("/").get(getContacts);
+// router.route("/").post(createContact);
 
-router.route("/:id").get(getContact);
+router.route("/:id").get(getContact).put(updateContact).delete(deleteContact);
+//Same as ;
 
-router.route("/:id").put(updateContact);
+// router.route("/:id").get(getContact);
+// router.route("/:id").put(updateContact);
 
-router.route("/:id").delete(deleteContact);
+// router.route("/:id").delete(deleteContact);
 
 module.exports = router;
