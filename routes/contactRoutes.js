@@ -12,10 +12,13 @@ const {
 
 //combined the routes because they are common
 router.route("/").get(getContacts).post(createContact);
+//Same as ;
 // router.route("/").get(getContacts);
 // router.route("/").post(createContact);
 
 router.route("/:id").get(getContact).put(updateContact).delete(deleteContact);
+//Same as ;
+
 // router.route("/:id").get(getContact);
 // router.route("/:id").put(updateContact);
 
